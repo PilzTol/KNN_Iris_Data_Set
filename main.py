@@ -2,7 +2,6 @@ import csv
 import random
 import numpy as np
 
-#Se eu quiser testar toda a base de testa posso iterar cada amostra da base de teste e adicionar os resultados em arquivos.
 #Abre da base de teste e seleciona uma amostra aleatoriamente.
 with open('iris_teste.csv', 'r') as iris_teste_csv:
     # ler arquivo csv inteiro em uma lista
@@ -18,7 +17,7 @@ with open('iris_teste.csv', 'r') as iris_teste_csv:
             cobaia[cont] = float(element)
             cont +=1
 
-        #Calcula as distancias da amostra escolhida e adiciona as distâncias no arquivo resultado.csv
+        #Calcula as distancias da amostra escolhida e adiciona as distâncias no arquivo distancias.csv
         with open('iris_treinamento.csv', 'r') as iris_treinamento_csv: 
             leitura_iris_treinamento = csv.reader(iris_treinamento_csv)
             for linha in leitura_iris_treinamento:
@@ -26,11 +25,13 @@ with open('iris_teste.csv', 'r') as iris_teste_csv:
                 classe_da_linha = linha[4]
                 linha.remove(linha[4])
                 cont = 0
+
                 #Conversão do tipo de dado
                 for element in linha:
                     linha[cont] = float(element)
                     cont +=1
                 distance = np.linalg.norm(np.array(linha) - np.array(cobaia))
+                
                 #Adiciona a distância + classe da amostra em distancias.csv
                 with open('distancias.csv', 'a', newline='') as distancias_csv:
                     escrever_distancia = csv.writer(distancias_csv)
