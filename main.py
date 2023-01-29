@@ -31,7 +31,7 @@ with open('iris_teste.csv', 'r') as iris_teste_csv:
                     linha[cont] = float(element)
                     cont +=1
                 distance = np.linalg.norm(np.array(linha) - np.array(cobaia))
-                #Adiciona a distância + classe da amostra em resultado.csv
+                #Adiciona a distância + classe da amostra em distancias.csv
                 with open('distancias.csv', 'a', newline='') as distancias_csv:
                     escrever_distancia = csv.writer(distancias_csv)
                     escrever_distancia.writerow([distance, classe_da_linha])
