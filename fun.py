@@ -1,7 +1,8 @@
 import csv
+import random
 
-def ler_data_set():
-    with open("iris.csv", "r") as arquivo:
-        leitor = csv.reader(arquivo)
-        for linha in leitor:
-            print(linha)    
+#Gerar número aleatório do 1 ao 30
+def numero_aleatorio_1_30():
+    numero = random.randint(1, 30)
+    return numero
+
