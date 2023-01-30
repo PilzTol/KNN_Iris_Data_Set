@@ -2,7 +2,7 @@ import csv
 import random
 import numpy as np
 
-#Abre da base de teste e seleciona uma amostra aleatoriamente.
+#Abre da base de teste e itera uma amostra por vez, salvando o resultado em resultado.csv.
 with open('iris_teste.csv', 'r') as iris_teste_csv:
     # ler arquivo csv inteiro em uma lista
     cobaias = list(csv.reader(iris_teste_csv))
