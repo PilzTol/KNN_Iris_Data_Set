@@ -50,6 +50,8 @@ with open('iris_teste.csv', 'r') as iris_teste_csv:
                     classe_distancia = amostra[1]
             leiura_distancias.remove([min,classe_distancia])
             k -=1
+            
+            #Escreve os vizinhos próximos no arquivo vizinhos_proximos.csv
             with open('vizinhos_proximos.csv', 'a', newline='') as vizinhos_proximos_csv:
                 escrever_vizinhos_proximos = csv.writer(vizinhos_proximos_csv)
                 escrever_vizinhos_proximos.writerow([min,classe_distancia])
@@ -58,11 +60,12 @@ with open('iris_teste.csv', 'r') as iris_teste_csv:
         with open("distancias.csv", "w") as limpar_arquivo:
             limpar_arquivo.truncate()
 
-        #Define qual a classe que a amostra pertence.
+    #Define qual a classe que a amostra pertence.
         with open('vizinhos_proximos.csv', 'r') as vizinhos_proximos_csv:
             leitura_vizinhos_proximos = list(csv.reader(vizinhos_proximos_csv))
         contagem = {}
 
+        #Qual é o vizinho mais frequente?
         for sublist in leitura_vizinhos_proximos:
             contagem[sublist[1]] = contagem.get(sublist[1], 0) + 1
         elemento_mais_repetido = max(contagem, key=contagem.get)
